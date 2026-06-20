@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نظام غذائي - زيادة الوزن والعضل</title>
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --card: #ffffff;
+    --ink: #2b2620;
+    --muted: #6b6358;
+    --accent: #b5651d;
+    --accent-dark: #8a4d15;
+    --line: #e3ddd0;
+    --protein-bg: #eef3ea;
+    --protein-ink: #3d6b2f;
+    --cal-bg: #f3ece0;
+    --cal-ink: #8a5a1f;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Tahoma', 'Segoe UI', Arial, sans-serif;
+    line-height: 1.8;
+    padding: 0 0 60px;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+    color: #fff;
+    padding: 40px 20px 32px;
+    text-align: center;
+  }
+
+  header h1 {
+    margin: 0 0 8px;
+    font-size: 1.9rem;
+  }
+
+  header p {
+    margin: 4px 0;
+    opacity: 0.92;
+    font-size: 0.95rem;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .stat-pill {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 30px 18px 0;
+  }
+
+  .meal {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+
+  .meal-header {
+    background: var(--accent);
+    color: #fff;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .meal-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .meal-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .meal.post-workout .meal-header {
+    background: var(--protein-ink);
+  }
+
+  .meal-totals {
+    display: flex;
+    gap: 8px;
+  }
+
+  .badge {
+    background: rgba(255,255,255,0.22);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  .meal-body {
+    padding: 18px 20px 20px;
+  }
+
+  .option {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    background: #fdfcfa;
+  }
+
+  .option:last-child { margin-bottom: 0; }
+
+  .option-title {
+    font-weight: bold;
+    color: var(--accent-dark);
+    margin-bottom: 6px;
+    font-size: 1.02rem;
+  }
+
+  .meal.post-workout .option-title {
+    color: var(--protein-ink);
+  }
+
+  .option-items {
+    color: var(--ink);
+    font-size: 0.97rem;
+    margin-bottom: 10px;
+  }
+
+  .macros {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .macro {
+    font-size: 0.82rem;
+    border-radius: 6px;
+    padding: 3px 9px;
+  }
+
+  .macro.cal {
+    background: var(--cal-bg);
+    color: var(--cal-ink);
+  }
+
+  .macro.protein {
+    background: var(--protein-bg);
+    color: var(--protein-ink);
+    font-weight: bold;
+  }
+
+  .notes {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-top: 10px;
+  }
+
+  .notes h3 {
+    margin-top: 0;
+    color: var(--accent-dark);
+  }
+
+  .notes ul {
+    margin: 0;
+    padding-right: 20px;
+  }
+
+  .notes li {
+    margin-bottom: 8px;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 30px;
+    padding: 0 20px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🍽️ نظام غذائي لزيادة الوزن والعضل</h1>
+  <p>مخصص لشخص طوله ١٧٧ سم، وزنه ٦٣ كجم، عمره ١٩ سنة</p>
+  <div class="stats">
+    <span class="stat-pill">السعرات: ١٧٠٠ - ١٩٠٠ سعرة/يوم</span>
+    <span class="stat-pill">البروتين: ١٠٠ - ١٢٠ جرام/يوم</span>
+    <span class="stat-pill">٣ وجبات رئيسية</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- Meal 1: Breakfast -->
+  <section class="meal">
+    <div class="meal-header">
+      <h2>الوجبة ١: الفطار</h2>
+    </div>
+    <svg class="meal-img" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رسم لطبق فطار يحتوي على بيض وخبز وجبنة">
+      <rect width="400" height="200" fill="#fdf6e8"/>
+      <ellipse cx="200" cy="120" rx="150" ry="55" fill="#f0e4c8"/>
+      <ellipse cx="200" cy="118" rx="138" ry="46" fill="#ffffff" stroke="#e8d9b8" stroke-width="2"/>
+      <ellipse cx="150" cy="115" rx="32" ry="26" fill="#fff8e7"/>
+      <circle cx="150" cy="115" r="13" fill="#f5a623"/>
+      <ellipse cx="230" cy="105" rx="32" ry="26" fill="#fff8e7"/>
+      <circle cx="230" cy="105" r="13" fill="#f5a623"/>
+      <rect x="95" y="60" width="58" height="34" rx="6" fill="#d98b3f"/>
+      <rect x="95" y="60" width="58" height="10" rx="5" fill="#c97a30"/>
+      <rect x="250" y="150" width="60" height="20" rx="4" fill="#fff4cf" stroke="#e8d18a" stroke-width="2"/>
+      <circle cx="270" cy="160" r="4" fill="#c7a23a"/>
+      <circle cx="285" cy="160" r="4" fill="#c7a23a"/>
+      <circle cx="295" cy="155" r="4" fill="#c7a23a"/>
+    </svg>
+    <div class="meal-body">
+
+      <div class="option">
+        <div class="option-title">اختيار أ</div>
+        <div class="option-items">٤ بيضة كاملة + ٢ رغيف عيش بلدي + جبنة قريش أو فيتا</div>
+        <div class="macros">
+          <span class="macro cal">≈ ٦٥٠ سعرة</span>
+          <span class="macro protein">≈ ٤٠ جم بروتين</span>
+        </div>
+      </div>
+
+      <div class="option">
+        <div class="option-title">اختيار ب</div>
+        <div class="option-items">فول (٢ كوب) + زيت زيتون + رغيف عيش بلدي + بيضتين كاملتين</div>
+        <div class="macros">
+          <span class="macro cal">≈ ٧٠٠ سعرة</span>
+          <span class="macro protein">≈ ٣٢ جم بروتين</span>
+        </div>
+      </div>
+
+      <div class="option">
+        <div class="option-title">اختيار ج</div>
+        <div class="option-items">٣ بيضة كاملة + جبنة بيضة + رغيف عيش بلدي + موزة</div>
+        <div class="macros">
+          <span class="macro cal">≈ ٦٢٠ سعرة</span>
+          <span class="macro protein">≈ ٣٠ جم بروتين</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Meal 2: Lunch -->
+  <section class="meal">
+    <div class="meal-header">
+      <h2>الوجبة ٢: الغداء</h2>
+    </div>
+    <svg class="meal-img" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رسم لطبق غداء يحتوي على فراخ مشوية وأرز وخضار">
+      <rect width="400" height="200" fill="#fdf6e8"/>
+      <ellipse cx="200" cy="125" rx="155" ry="58" fill="#f0e4c8"/>
+      <ellipse cx="200" cy="122" rx="143" ry="48" fill="#ffffff" stroke="#e8d9b8" stroke-width="2"/>
+      <ellipse cx="150" cy="118" rx="48" ry="30" fill="#f5f0e3"/>
+      <circle cx="135" cy="110" r="6" fill="#f5f0e3" stroke="#e0d6bd" stroke-width="1"/>
+      <circle cx="150" cy="106" r="6" fill="#f5f0e3" stroke="#e0d6bd" stroke-width="1"/>
+      <circle cx="165" cy="110" r="6" fill="#f5f0e3" stroke="#e0d6bd" stroke-width="1"/>
+      <circle cx="142" cy="122" r="6" fill="#f5f0e3" stroke="#e0d6bd" stroke-width="1"/>
+      <circle cx="158" cy="122" r="6" fill="#f5f0e3" stroke="#e0d6bd" stroke-width="1"/>
+      <ellipse cx="255" cy="110" rx="42" ry="24" fill="#c8763b"/>
+      <ellipse cx="255" cy="106" rx="38" ry="20" fill="#d98b3f"/>
+      <path d="M225 100 q15 -10 30 0" stroke="#a85f2b" stroke-width="2" fill="none"/>
+      <path d="M235 115 q15 -8 30 2" stroke="#a85f2b" stroke-width="2" fill="none"/>
+      <ellipse cx="245" cy="155" rx="14" ry="9" fill="#5d9e4d"/>
+      <ellipse cx="262" cy="158" rx="13" ry="8" fill="#5d9e4d"/>
+      <circle cx="280" cy="150" r="8" fill="#d24f4f"/>
+    </svg>
+    <div class="meal-body">
+
+      <div class="option">
+        <div class="option-title">اختيار أ</div>
+        <div class="option-items">فراخ مشوية (١٥٠ جرام) + رز أو مكرونة (كوب) + خضار سوتيه</div>
+        <div class="macros">
+          <span class="macro cal">≈ ٦٥٠ سعرة</span>
+          <span class="macro protein">≈ ٤٥ جم بروتين</span>
+        </div>
+      </div>
+
+      <div class="option">
+        <div class="option-title">اختيار ب</div>
+        <div class="option-items">لحمة مفرومة أو كبدة (١٥٠ جرام) + بطاطس مسلوقة أو مهروسة + سلطة</div>
+        <div class="macros">
+          <span class="macro cal">≈ ٧٠٠ سعرة</span>
+          <span class="macro protein">≈ ٤٠ جم بروتين</span>
+        </div>
+      </div>
+
+      <div class="option">
+        <div class="option-title">اختيار ج</div>
+        <div class="option-items">تونة (علبة) + أرز + خضار + زيت زيتون</div>
+        <div class="macros">
+          <span class="macro cal">≈ ٦٠٠ سعرة</span>
+          <span class="macro protein">≈ ٣٨ جم بروتين</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Meal 3: Dinner -->
+  <section class="meal">
+    <div class="meal-header">
+      <h2>الوجبة ٣: العشاء</h2>
+    </div>
+    <svg class="meal-img" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رسم لطبق عشاء خفيف يحتوي على جبنة وخضار وعيش بلدي">
+      <rect width="400" height="200" fill="#fdf6e8"/>
+      <ellipse cx="200" cy="125" rx="150" ry="55" fill="#f0e4c8"/>
+      <ellipse cx="200" cy="122" rx="138" ry="46" fill="#ffffff" stroke="#e8d9b8" stroke-width="2"/>
+      <rect x="135" y="100" width="50" height="32" rx="4" fill="#fbeec2" stroke="#e6d68f" stroke-width="2"/>
+      <circle cx="148" cy="110" r="3" fill="#e6d68f"/>
+      <circle cx="165" cy="118" r="3" fill="#e6d68f"/>
+      <circle cx="172" cy="106" r="3" fill="#e6d68f"/>
+      <ellipse cx="245" cy="115" rx="22" ry="22" fill="#cfe3c4"/>
+      <circle cx="237" cy="108" r="9" fill="#d24f4f"/>
+      <circle cx="255" cy="112" r="7" fill="#5d9e4d"/>
+      <circle cx="245" cy="125" r="7" fill="#5d9e4d"/>
+      <rect x="270" y="148" width="55" height="18" rx="5" fill="#d98b3f"/>
+      <rect x="270" y="148" width="55" height="6" rx="3" fill="#c97a30"/>
+    </svg>
+    <div class="meal-body">
+
+      <div class="option">
+        <div class="option-title">اختيار أ</div>
+        <div class="option-items">جبنة قريش أو فيتا + رغيف عيش بلدي + خضار (خيار وطماطم) + زيتون</div>
+        <div class="macros">
+          <span class="macro cal">≈ ٣٨٠ سعرة</span>
+          <span class="macro protein">≈ ٢٢ جم بروتين</span>
+        </div>
+      </div>
+
+      <div class="option">
+        <div class="option-title">اختيار ب</div>
+        <div class="option-items">زبادي كامل الدسم + توست أو عيش بلدي + جبنة بيضة + خيار</div>
+        <div class="macros">
+          <span class="macro cal">≈ ٤٠٠ سعرة</span>
+          <span class="macro protein">≈ ٢٤ جم بروتين</span>
+        </div>
+      </div>
+
+      <div class="option">
+        <div class="option-title">اختيار ج</div>
+        <div class="option-items">بيضتين مسلوقة + جبنة قريش + رغيف عيش بلدي + سلطة خضار</div>
+        <div class="macros">
+          <span class="macro cal">≈ ٣٦٠ سعرة</span>
+          <span class="macro protein">≈ ٢٦ جم بروتين</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="notes">
+    <h3>📌 ملاحظات مهمة</h3>
+    <ul>
+      <li><strong>بين الوجبات:</strong> فاكهة (موز، تين، عنب) ومكسرات (لوز، فول سوداني) كسناكس لزيادة السعرات لو حسيت إنك محتاج سعرات زيادة.</li>
+      <li><strong>الزيوت:</strong> زيت زيتون على السلطات والخضار لزيادة السعرات بشكل صحي.</li>
+      <li><strong>اللبن:</strong> ٣-٤ أكواب لبن كامل الدسم يومياً موزعة على اليوم.</li>
+      <li><strong>الماء:</strong> ٢.٥-٣ لتر يومياً.</li>
+      <li>الأرقام المذكورة تقريبية، الهدف منها التوجيه العام لا الدقة المعملية.</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>
+  نظام غذائي شخصي — للاستخدام الفردي فقط
+</footer>
+
+</body>
+</html>
